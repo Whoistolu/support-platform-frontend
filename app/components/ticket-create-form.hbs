@@ -1,0 +1,29 @@
+<form {{on "submit" this.submitTicket}}>
+  <label>
+    Subject:
+    <input
+      type="text"
+      placeholder="Subject"
+      {{on "input" this.updateSubject}}
+    />
+  </label>
+
+  <label>
+    Description:
+    <textarea
+      placeholder="Describe your issue"
+      {{on "input" this.updateMessage}}
+    ></textarea>
+  </label>
+
+  <label>
+    Attachment:
+    <input
+      type="file"
+      accept="image/*,application/pdf"
+      {{on "change" this.uploadFile}}
+    />
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
