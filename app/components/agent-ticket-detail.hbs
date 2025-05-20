@@ -7,7 +7,10 @@
 <ul>
   {{#each @model.comments as |comment|}}
     <li>
-      <strong>{{comment.user.name}} ({{comment.user.role}}):</strong> {{comment.message}} - {{comment.createdAt}}
+      <strong>{{comment.user.name}} ({{comment.user.role}}):</strong>
+      {{comment.message}}
+      -
+      {{comment.createdAt}}
     </li>
   {{/each}}
 </ul>

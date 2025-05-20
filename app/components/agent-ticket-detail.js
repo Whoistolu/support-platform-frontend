@@ -7,14 +7,16 @@ export default class AgentTicketDetailRoute extends Route {
 
   async model(params) {
     const query = gql`
-      query($id: ID!) {
+      query ($id: ID!) {
         supportTicket(id: $id) {
           id
           title
           description
           status
           createdAt
-          user { email }
+          user {
+            email
+          }
           comments {
             id
             message
@@ -30,7 +32,7 @@ export default class AgentTicketDetailRoute extends Route {
 
     const result = await this.apollo.query({
       query,
-      variables: { id: params.id }
+      variables: { id: params.id },
     });
 
     return result.supportTicket;

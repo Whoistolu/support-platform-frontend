@@ -16,8 +16,10 @@ export default class AgentCommentSectionComponent extends Component {
     e.preventDefault();
 
     const mutation = gql`
-      mutation($ticketId: ID!, $message: String!) {
-        createComment(input: { supportTicketId: $ticketId, message: $message }) {
+      mutation ($ticketId: ID!, $message: String!) {
+        createComment(
+          input: { supportTicketId: $ticketId, message: $message }
+        ) {
           comment {
             id
           }
@@ -30,8 +32,8 @@ export default class AgentCommentSectionComponent extends Component {
       mutation,
       variables: {
         ticketId: this.args.ticketId,
-        message: this.commentText
-      }
+        message: this.commentText,
+      },
     });
 
     window.location.reload();
