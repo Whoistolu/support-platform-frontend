@@ -12,4 +12,9 @@ Router.map(function () {
   this.route('tickets', function () {
     this.route('detail', { path: '/:id' });
   });
+  this.route('agent', function () {
+    this.route('tickets', function () {
+      this.route('detail', { path: '/:id' });
+    });
+  });
 });
