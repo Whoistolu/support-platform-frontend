@@ -9,7 +9,9 @@ export default class CommentSectionComponent extends Component {
   @service apollo;
 
   get canComment() {
-    return this.args.ticket.comments.any(comment => comment.user.role === 'agent');
+    return this.args.ticket.comments.any(
+      (comment) => comment.user.role === 'agent',
+    );
   }
 
   @action
@@ -18,7 +20,7 @@ export default class CommentSectionComponent extends Component {
     if (!this.canComment) return;
 
     const mutation = gql`
-      mutation($input: CreateCommentInput!) {
+      mutation ($input: CreateCommentInput!) {
         createComment(input: $input) {
           comment {
             id
@@ -34,9 +36,9 @@ export default class CommentSectionComponent extends Component {
       variables: {
         input: {
           ticketId: this.args.ticket.id,
-          body: this.commentText
-        }
-      }
+          body: this.commentText,
+        },
+      },
     });
 
     this.commentText = '';

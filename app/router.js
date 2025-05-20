@@ -12,5 +12,4 @@ Router.map(function () {
   this.route('tickets', function () {
     this.route('detail', { path: '/:id' });
   });
-
 });

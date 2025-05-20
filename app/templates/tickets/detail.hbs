@@ -5,7 +5,7 @@
 <h3>Attachments</h3>
 <ul>
   {{#each this.model.attachmentUrls as |url|}}
-    <li><a href={{url}} target="_blank">View File</a></li>
+    <li><a href={{url}} target="_blank" rel="noopener noreferrer">View File</a></li>
   {{/each}}
 </ul>
 
@@ -13,7 +13,8 @@
 <ul>
   {{#each this.model.comments as |comment|}}
     <li>
-      <strong>{{comment.user.name}} ({{comment.user.role}})</strong>: {{comment.body}}<br />
+      <strong>{{comment.user.name}} ({{comment.user.role}})</strong>:
+      {{comment.body}}<br />
       <small>{{comment.createdAt}}</small>
     </li>
   {{/each}}

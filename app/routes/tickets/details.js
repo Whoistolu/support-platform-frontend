@@ -8,7 +8,7 @@ export default class TicketsDetailRoute extends Route {
   async model(params) {
     const response = await this.apollo.query({
       query: GET_TICKET_DETAIL,
-      variables: { id: params.id }
+      variables: { id: params.id },
     });
 
     return response.ticket;

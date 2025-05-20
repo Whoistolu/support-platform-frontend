@@ -3,7 +3,9 @@
   {{#each this.tickets as |ticket|}}
     <li>
       <LinkTo @route="tickets.detail" @model={{ticket.id}}>
-        {{ticket.title}} - {{ticket.status}}
+        {{ticket.title}}
+        -
+        {{ticket.status}}
       </LinkTo>
     </li>
   {{/each}}
