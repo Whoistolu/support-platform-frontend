@@ -1,2 +1,11 @@
-{{page-title "My Tickets"}}
-<TicketList />
+<h2>Your Tickets</h2>
+
+<ul>
+  {{#each this.model as |ticket|}}
+    <li>
+      <LinkTo @route="tickets.detail" @model={{ticket.id}}>
+        {{ticket.title}} - {{ticket.status}} ({{ticket.createdAt}})
+      </LinkTo>
+    </li>
+  {{/each}}
+</ul>
