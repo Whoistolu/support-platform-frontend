@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import gql from 'graphql-tag';
 import { inject as service } from '@ember/service';
+import { upload } from 'ember-active-storage';
 
 export default class TicketCreateFormComponent extends Component {
   @service apollo;
@@ -25,6 +26,21 @@ export default class TicketCreateFormComponent extends Component {
   @action async submitTicket(e) {
     e.preventDefault();
 
+    let signedId = null;
+
+    if (this.file) {
+      try {
+        const uploadResult = await upload(this.file, {
+          directUploadUrl: 'http://localhost:3000/rails/active_storage/direct_uploads'
+        });
+
+        signedId = uploadResult.signedId;
+      } catch (uploadError) {
+        console.error('Upload failed:', uploadError);
+        return alert('File upload failed.');
+      }
+    }
+
     const mutation = gql`
       mutation($input: CreateTicketInput!) {
         createTicket(input: $input) {
@@ -38,19 +54,21 @@ export default class TicketCreateFormComponent extends Component {
     `;
 
     try {
-      await this.apollo.mutate({
+      const response = await this.apollo.mutate({
         mutation,
         variables: {
           input: {
             subject: this.subject,
             message: this.message,
-            file: this.file
+            file: signedId
           }
         }
       });
 
-    } catch (error) {
-      console.error('Ticket creation failed:', error);
+      console.log('Ticket created:', response);
+    } catch (err) {
+      console.error('Ticket creation failed:', err);
+      alert('Something went wrong.');
     }
   }
 }
