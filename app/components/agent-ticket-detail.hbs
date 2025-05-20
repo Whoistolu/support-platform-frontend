@@ -1,1 +1,15 @@
-{{yield}}
+<h3>{{@model.title}}</h3>
+<p><strong>Status:</strong> {{@model.status}}</p>
+<p><strong>Submitted by:</strong> {{@model.user.email}}</p>
+<p>{{@model.description}}</p>
+
+<h4>Comments</h4>
+<ul>
+  {{#each @model.comments as |comment|}}
+    <li>
+      <strong>{{comment.user.name}} ({{comment.user.role}}):</strong> {{comment.message}} - {{comment.createdAt}}
+    </li>
+  {{/each}}
+</ul>
+
+<AgentCommentSection @ticketId={{@model.id}} />
