@@ -10,6 +10,6 @@ Router.map(function () {
   this.route('login');
   this.route('signup');
   this.route('tickets', function () {
-    this.route('ticket');
+    this.route('detail', { path: '/:id' });
   });
 });
