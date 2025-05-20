@@ -7,7 +7,7 @@ export default class TicketsTicketRoute extends Route {
 
   async model(params) {
     const query = gql`
-      query($id: ID!) {
+      query ($id: ID!) {
         myTicket(id: $id) {
           id
           subject
@@ -32,6 +32,9 @@ export default class TicketsTicketRoute extends Route {
       }
     `;
 
-    return this.apollo.query({ query, variables: { id: params.ticket_id } }, 'myTicket');
+    return this.apollo.query(
+      { query, variables: { id: params.ticket_id } },
+      'myTicket',
+    );
   }
 }
