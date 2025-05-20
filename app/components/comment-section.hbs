@@ -1,6 +1,13 @@
 {{#if this.canComment}}
   <form {{on "submit" this.postComment}}>
-    <textarea placeholder="Write your comment..." {{on "input" this.updateComment}}>{{this.commentText}}</textarea>
+    <label for="comment-body">Your Comment</label>
+    <textarea
+      id="comment-body"
+      placeholder="comment..."
+      {{on "input" this.updateComment}}
+    >
+      {{this.commentText}}
+    </textarea>
     <button type="submit">Post Comment</button>
   </form>
 {{else}}
