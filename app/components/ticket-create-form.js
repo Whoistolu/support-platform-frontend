@@ -11,9 +11,15 @@ export default class TicketCreateFormComponent extends Component {
   message = '';
   file = null;
 
-  @action updateSubject(e) { this.subject = e.target.value; }
-  @action updateMessage(e) { this.message = e.target.value; }
-  @action uploadFile(e) { this.file = e.target.files[0]; }
+  @action updateSubject(e) {
+    this.subject = e.target.value;
+  }
+  @action updateMessage(e) {
+    this.message = e.target.value;
+  }
+  @action uploadFile(e) {
+    this.file = e.target.files[0];
+  }
 
   @action async submitTicket(e) {
     e.preventDefault();
@@ -23,13 +29,14 @@ export default class TicketCreateFormComponent extends Component {
       try {
         fileSignedId = await uploadFile(this.file);
       } catch (error) {
+        console.error('File upload failed', error);
         alert('File upload failed');
         return;
       }
     }
 
     const mutation = gql`
-      mutation($input: CreateTicketInput!) {
+      mutation ($input: CreateTicketInput!) {
         createTicket(input: $input) {
           supportTicket {
             id
@@ -41,15 +48,15 @@ export default class TicketCreateFormComponent extends Component {
       }
     `;
 
-    const response = await this.apollo.mutate({
+    await this.apollo.mutate({
       mutation,
       variables: {
         input: {
           title: this.subject,
           description: this.message,
-          attachments: fileSignedId ? [fileSignedId] : []
-        }
-      }
+          attachments: fileSignedId ? [fileSignedId] : [],
+        },
+      },
     });
   }
 }
