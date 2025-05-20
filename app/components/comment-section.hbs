@@ -1,3 +1,12 @@
-<div class="comment-section">
-  {{yield}}
-</div>
+<h3>Comments</h3>
+<ul>
+  {{#each @comments as |comment|}}
+    <li>
+      <strong>{{comment.user.name}} ({{comment.user.role}})</strong>
+      <br />
+      {{comment.body}}
+      <br />
+      <small>{{comment.createdAt}}</small>
+    </li>
+  {{/each}}
+</ul>

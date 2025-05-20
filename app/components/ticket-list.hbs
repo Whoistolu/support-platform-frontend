@@ -1,3 +1,10 @@
-<div class="ticket-list">
-  {{yield}}
-</div>
+<h2>Your Tickets</h2>
+<ul>
+  {{#each this.tickets as |ticket|}}
+    <li>
+      <LinkTo @route="tickets.detail" @model={{ticket.id}}>
+        {{ticket.title}} - {{ticket.status}}
+      </LinkTo>
+    </li>
+  {{/each}}
+</ul>

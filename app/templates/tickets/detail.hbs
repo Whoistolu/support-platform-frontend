@@ -1,0 +1,14 @@
+<h2>{{this.model.title}}</h2>
+<p>Status: {{this.model.status}}</p>
+<p>{{this.model.description}}</p>
+
+{{#if this.model.attachmentUrls.length}}
+  <h4>Attachments:</h4>
+  <ul>
+    {{#each this.model.attachmentUrls as |url|}}
+      <li><a href={{url}} target="_blank" rel="noopener noreferrer">{{url}}</a></li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+<CommentSection @comments={{this.model.comments}} />
