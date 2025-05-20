@@ -2,9 +2,15 @@ export default function() {
   return {
     apiURL: 'http://localhost:3000/graphql',
     clientOptions: {
-      headers: () => {
+      request: (operation) => {
         const token = localStorage.getItem('token');
-        return token ? { Authorization: `Bearer ${token}` } : {};
+        if (token) {
+          operation.setContext({
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+        }
       }
     }
   };
