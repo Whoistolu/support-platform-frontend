@@ -1,4 +1,4 @@
-export default function() {
+export default function () {
   return {
     apiURL: 'http://localhost:3000/graphql',
     clientOptions: {
@@ -7,11 +7,11 @@ export default function() {
         if (token) {
           operation.setContext({
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
         }
-      }
-    }
+      },
+    },
   };
 }
