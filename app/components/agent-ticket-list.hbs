@@ -1,1 +1,10 @@
-{{yield}}
+<h2>All Support Tickets</h2>
+
+<ul>
+  {{#each this.tickets as |ticket|}}
+    <li>
+      <strong>{{ticket.title}}</strong> - {{ticket.status}} - {{ticket.user.email}}
+      <LinkTo @route="agent.detail" @model={{ticket.id}}>View</LinkTo>
+    </li>
+  {{/each}}
+</ul>
