@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 
 export default class AgentTicketDetailComponent extends Component {
   @service apollo;
+  @service toastr;
 
   @action
   async updateStatus(newStatus) {
@@ -20,22 +21,22 @@ export default class AgentTicketDetailComponent extends Component {
       }
     `;
 
-    await this.apollo.mutate({
-      mutation,
-      variables: {
-        id: this.args.ticket.id,
-        status: newStatus
-      },
-      update: (cache, { data }) => {
-        cache.modify({
-          id: cache.identify({ __typename: 'SupportTicket', id: this.args.ticket.id }),
-          fields: {
-            status() {
-              return newStatus;
-            }
-          }
-        });
+    try {
+      const { data } = await this.apollo.mutate({
+        mutation,
+        variables: {
+          id: this.args.ticket.id,
+          status: newStatus
+        }
+      });
+
+      if (data.updateSupportTicket.errors.length === 0) {
+        this.toastr.success('Status updated successfully');
+      } else {
+        this.toastr.error(data.updateSupportTicket.errors.join(', '));
       }
-    });
+    } catch (e) {
+      this.toastr.error('Something went wrong while updating the status');
+    }
   }
 }
