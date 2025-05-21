@@ -36,6 +36,7 @@ export default class AgentTicketDetailComponent extends Component {
         this.toastr.error(data.updateSupportTicket.errors.join(', '));
       }
     } catch (e) {
+        console.error(e); 
       this.toastr.error('Something went wrong while updating the status');
     }
   }

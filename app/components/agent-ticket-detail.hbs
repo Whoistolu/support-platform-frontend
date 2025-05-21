@@ -3,7 +3,7 @@
   <p><strong>Status:</strong> {{@ticket.status}}</p>
 
   <label for="status-select">Change Status:</label>
-  <select id="status-select" {{on "change" (fn this.updateStatus value="target.value")}}>
+  <select id="status-select" {{on "change" this.updateStatus}}>
     <option selected disabled>Change status</option>
     <option value="open">Open</option>
     <option value="pending">Pending</option>
