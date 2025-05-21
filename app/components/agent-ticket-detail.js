@@ -1,40 +1,43 @@
-import Route from '@ember/routing/route';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import gql from 'graphql-tag';
 
-export default class AgentTicketDetailRoute extends Route {
+export default class AgentTicketDetailComponent extends Component {
   @service apollo;
+  @service toastr;
 
-  async model(params) {
-    const query = gql`
-      query ($id: ID!) {
-        supportTicket(id: $id) {
-          id
-          title
-          description
-          status
-          createdAt
-          user {
-            email
-          }
-          comments {
+  @action
+  async updateStatus(newStatus) {
+    const mutation = gql`
+      mutation ($id: ID!, $status: String!) {
+        updateSupportTicket(id: $id, status: $status) {
+          supportTicket {
             id
-            message
-            user {
-              name
-              role
-            }
-            createdAt
+            status
           }
+          errors
         }
       }
     `;
 
-    const result = await this.apollo.query({
-      query,
-      variables: { id: params.id },
-    });
+    try {
+      const { data } = await this.apollo.mutate({
+        mutation,
+        variables: {
+          id: this.args.ticket.id,
+          status: newStatus,
+        },
+      });
 
-    return result.supportTicket;
+      if (data.updateSupportTicket.errors.length === 0) {
+        this.toastr.success('Status updated successfully');
+      } else {
+        this.toastr.error(data.updateSupportTicket.errors.join(', '));
+      }
+    } catch (e) {
+      console.error(e);
+      this.toastr.error('Something went wrong while updating the status');
+    }
   }
 }
