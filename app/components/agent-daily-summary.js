@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import query from '../graphql/queries/agent-open-tickets';
 
 export default class AgentDailySummaryComponent extends Component {
