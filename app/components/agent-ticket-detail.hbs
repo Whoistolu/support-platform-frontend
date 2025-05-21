@@ -1,12 +1,14 @@
-<h2>Ticket: {{@ticket.title}}</h2>
-<p>Status: {{@ticket.status}}</p>
+<div class="ticket-detail">
+  <h2>Ticket: {{@ticket.title}}</h2>
+  <p><strong>Status:</strong> {{@ticket.status}}</p>
 
-<label for="status-select">Change Status:</label>
-<select id="status-select" {{on "change" (fn this.updateStatus value="target.value")}}>
-  <option selected disabled>Change status</option>
-  <option value="open">Open</option>
-  <option value="pending">Pending</option>
-  <option value="closed">Closed</option>
-</select>
+  <label for="status-select">Change Status:</label>
+  <select id="status-select" {{on "change" (fn this.updateStatus value="target.value")}}>
+    <option selected disabled>Change status</option>
+    <option value="open">Open</option>
+    <option value="pending">Pending</option>
+    <option value="closed">Closed</option>
+  </select>
 
-<p><strong>Description:</strong> {{@ticket.description}}</p>
+  <p><strong>Description:</strong> {{@ticket.description}}</p>
+</div>
