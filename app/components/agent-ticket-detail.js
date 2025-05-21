@@ -10,7 +10,7 @@ export default class AgentTicketDetailComponent extends Component {
   @action
   async updateStatus(newStatus) {
     const mutation = gql`
-      mutation($id: ID!, $status: String!) {
+      mutation ($id: ID!, $status: String!) {
         updateSupportTicket(id: $id, status: $status) {
           supportTicket {
             id
@@ -26,8 +26,8 @@ export default class AgentTicketDetailComponent extends Component {
         mutation,
         variables: {
           id: this.args.ticket.id,
-          status: newStatus
-        }
+          status: newStatus,
+        },
       });
 
       if (data.updateSupportTicket.errors.length === 0) {
@@ -36,7 +36,7 @@ export default class AgentTicketDetailComponent extends Component {
         this.toastr.error(data.updateSupportTicket.errors.join(', '));
       }
     } catch (e) {
-        console.error(e); 
+      console.error(e);
       this.toastr.error('Something went wrong while updating the status');
     }
   }
