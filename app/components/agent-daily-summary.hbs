@@ -3,7 +3,9 @@
 <ul>
   {{#each this.tickets as |ticket|}}
     <li>
-      <strong>{{ticket.title}}</strong> — {{ticket.status}}<br />
+      <strong>{{ticket.title}}</strong>
+      —
+      {{ticket.status}}<br />
       <small>Created: {{ticket.createdAt}}</small>
     </li>
   {{/each}}
