@@ -41,7 +41,10 @@ export default class AuthService extends Service {
         }
       `;
 
-      const result = await this.apollo.query({ query, fetchPolicy: 'network-only' });
+      const result = await this.apollo.query({
+        query,
+        fetchPolicy: 'network-only',
+      });
       this.user = result?.currentUser;
     } catch (error) {
       console.error('Failed to auto-fetch user:', error);
