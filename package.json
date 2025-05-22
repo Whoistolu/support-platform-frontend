@@ -88,6 +88,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@rails/activestorage": "^8.0.200"
+    "@rails/activestorage": "^8.0.200",
+    "jwt-decode": "^4.0.0"
   }
 }
