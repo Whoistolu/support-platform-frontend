@@ -1,1 +1,25 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f4f6f9;
+  color: #1f2d3d;
+}
+
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.button {
+  background-color: #1f73b7;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #1665a2;
+}
