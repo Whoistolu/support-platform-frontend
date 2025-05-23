@@ -4,8 +4,12 @@
 
     <form {{on "submit" this.submitTicket}} class="space-y-4">
       <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700">Subject</label>
+        <label
+          for="subject-input"
+          class="block text-sm font-medium mb-1 text-gray-700"
+        >Subject</label>
         <input
+          id="subject-input"
           type="text"
           class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-300"
           placeholder="Enter subject"
@@ -14,8 +18,12 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700">Message</label>
+        <label
+          for="description-textarea"
+          class="block text-sm font-medium mb-1 text-gray-700"
+        >Message</label>
         <textarea
+          id="description-textarea"
           class="w-full border border-gray-300 p-2 rounded resize-none focus:outline-none focus:ring focus:border-blue-300"
           rows="5"
           placeholder="Describe your issue"
@@ -24,8 +32,12 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1 text-gray-700">Attachment (PDF or Image)</label>
+        <label
+          for="attachment-input"
+          class="block text-sm font-medium mb-1 text-gray-700"
+        >Attachment (PDF or Image)</label>
         <input
+          id="attachment-input"
           type="file"
           accept="image/*,application/pdf"
           class="w-full"
@@ -40,5 +52,6 @@
         Submit Ticket
       </button>
     </form>
+
   </div>
 </div>
