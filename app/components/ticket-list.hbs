@@ -2,25 +2,39 @@
   <h1 class="text-2xl font-semibold mb-2">Your Tickets</h1>
 
   {{#each this.model as |ticket|}}
-    <div 
-      class="card bg-white p-4 rounded-lg shadow-sm hover:shadow-md cursor-pointer transition-all"
-      {{on "click" (fn this.gotoTicket ticket.id)}}
+    <div
+      class="card bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all"
     >
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="text-lg font-medium text-blue-600">{{ticket.subject}}</h2>
-          <p class="text-sm text-gray-500 mt-1">Ticket ID: {{ticket.id}}</p>
-        </div>
+      <button
+        type="button"
+        class="w-full text-left"
+        {{on "click" (fn this.gotoTicket ticket.id)}}
+      >
+        <div class="flex justify-between items-center">
+          <div>
+            <span
+              class="block text-lg font-medium text-blue-600"
+            >{{ticket.subject}}</span>
+            <span class="block text-sm text-gray-500 mt-1">Ticket ID:
+              {{ticket.id}}</span>
+          </div>
 
-        <span
-          class="px-2 py-1 text-sm font-medium rounded-full
-                 {{if (eq ticket.status 'open') 'bg-green-100 text-green-800'
-                   (if (eq ticket.status 'pending') 'bg-yellow-100 text-yellow-800'
-                     'bg-red-100 text-red-700')}}"
-        >
-          {{ticket.status}}
-        </span>
-      </div>
+          <span
+            class="px-2 py-1 text-sm font-medium rounded-full
+              {{if
+                (eq ticket.status 'open')
+                'bg-green-100 text-green-800'
+                (if
+                  (eq ticket.status 'pending')
+                  'bg-yellow-100 text-yellow-800'
+                  'bg-red-100 text-red-700'
+                )
+              }}"
+          >
+            {{ticket.status}}
+          </span>
+        </div>
+      </button>
     </div>
   {{/each}}
 </div>

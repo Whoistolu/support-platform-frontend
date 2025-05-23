@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: #f4f6f9;
   color: #1f2d3d;
 }
@@ -8,7 +8,7 @@ body {
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .button {
