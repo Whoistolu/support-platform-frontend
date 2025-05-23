@@ -7,7 +7,11 @@ export default class LoginRoute extends Route {
 
   beforeModel() {
     if (this.auth.isAuthenticated()) {
-      this.router.transitionTo('tickets');
+      if (this.auth.user?.role === 'agent') {
+        this.router.transitionTo('agent.tickets');
+      } else {
+        this.router.transitionTo('tickets');
+      }
     }
   }
 }
