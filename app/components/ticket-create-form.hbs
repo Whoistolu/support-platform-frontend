@@ -1,29 +1,44 @@
-<form {{on "submit" this.submitTicket}}>
-  <label>
-    Subject:
-    <input
-      type="text"
-      placeholder="Subject"
-      {{on "input" this.updateSubject}}
-    />
-  </label>
+<div class="max-w-2xl mx-auto p-4">
+  <div class="card bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Create a New Ticket</h2>
 
-  <label>
-    Description:
-    <textarea
-      placeholder="Describe your issue"
-      {{on "input" this.updateMessage}}
-    ></textarea>
-  </label>
+    <form {{on "submit" this.submitTicket}} class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1 text-gray-700">Subject</label>
+        <input
+          type="text"
+          class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+          placeholder="Enter subject"
+          {{on "input" this.updateSubject}}
+        />
+      </div>
 
-  <label>
-    Attachment:
-    <input
-      type="file"
-      accept="image/*,application/pdf"
-      {{on "change" this.uploadFile}}
-    />
-  </label>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-gray-700">Message</label>
+        <textarea
+          class="w-full border border-gray-300 p-2 rounded resize-none focus:outline-none focus:ring focus:border-blue-300"
+          rows="5"
+          placeholder="Describe your issue"
+          {{on "input" this.updateMessage}}
+        ></textarea>
+      </div>
 
-  <button type="submit">Submit</button>
-</form>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-gray-700">Attachment (PDF or Image)</label>
+        <input
+          type="file"
+          accept="image/*,application/pdf"
+          class="w-full"
+          {{on "change" this.uploadFile}}
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all"
+      >
+        Submit Ticket
+      </button>
+    </form>
+  </div>
+</div>
