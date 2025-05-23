@@ -15,8 +15,12 @@
 
   {{#if this.canComment}}
     <form {{on "submit" this.postComment}} class="space-y-3">
-      <label class="block text-sm font-medium text-gray-700">Your Comment</label>
+      <label
+        for="comment-textarea"
+        class="block text-sm font-medium text-gray-700"
+      >Comment</label>
       <textarea
+        id="comment-textarea"
         class="w-full p-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:border-blue-300"
         rows="4"
         placeholder="Write your comment..."
@@ -29,7 +33,9 @@
         Post Comment
       </button>
     </form>
+
   {{else}}
-    <p class="text-sm text-gray-500">You can only comment after an agent has responded.</p>
+    <p class="text-sm text-gray-500">You can only comment after an agent has
+      responded.</p>
   {{/if}}
 </div>
