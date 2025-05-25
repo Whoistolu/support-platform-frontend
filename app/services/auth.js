@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import service from '@ember/service';
+import { inject as service } from '@ember/service';
 import jwtDecode from 'jwt-decode';
 import gql from 'graphql-tag';
 
