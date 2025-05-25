@@ -5,7 +5,7 @@
       <li class="agent-ticket">
         <h3>{{ticket.subject}}</h3>
         <p>Status: {{ticket.status}}</p>
-        <button class="agent-button" {{on "click" (fn this.viewDetail ticket.id)}}>View Details</button>
+        <button class="agent-button" type="button" {{on "click" (fn this.viewDetail ticket.id)}}>View Details</button>
       </li>
     {{/each}}
   </ul>
