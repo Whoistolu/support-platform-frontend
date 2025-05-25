@@ -9,12 +9,25 @@
 
   {{#each @ticket.comments as |comment|}}
     <div>
-      <strong>{{comment.user.name}}</strong>: {{comment.body}}
+      <strong>{{comment.user.name}}</strong>:
+      {{comment.body}}
     </div>
   {{/each}}
 
   <div class="agent-comment-box">
-    <textarea placeholder="Write a comment..." {{on "input" this.updateComment}}>{{this.commentText}}</textarea>
-    <button class="agent-button" type="button" {{on "click" this.submitComment}}>Post Comment</button>
+    <label for="agent-comment">Comment</label>
+    <textarea
+      id="agent-comment"
+      placeholder="Write a comment..."
+      {{on "input" this.updateComment}}
+    >{{this.commentText}}</textarea>
+
+    <button
+      class="agent-button"
+      type="button"
+      {{on "click" this.submitComment}}
+    >
+      Post Comment
+    </button>
   </div>
 </div>
