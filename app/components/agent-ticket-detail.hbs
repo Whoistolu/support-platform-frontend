@@ -1,14 +1,20 @@
-<div class="ticket-detail">
-  <h2>Ticket: {{@ticket.title}}</h2>
-  <p><strong>Status:</strong> {{@ticket.status}}</p>
+<div class="agent-container">
+  <h2>{{@ticket.subject}}</h2>
+  <p>Status: {{@ticket.status}}</p>
+  <p>Description: {{@ticket.description}}</p>
 
-  <label for="status-select">Change Status:</label>
-  <select id="status-select" {{on "change" this.updateStatus}}>
-    <option selected disabled>Change status</option>
-    <option value="open">Open</option>
-    <option value="pending">Pending</option>
-    <option value="closed">Closed</option>
-  </select>
+  {{#each @ticket.attachments as |url|}}
+    <p><a href={{url}} target="_blank">View Attachment</a></p>
+  {{/each}}
 
-  <p><strong>Description:</strong> {{@ticket.description}}</p>
+  {{#each @ticket.comments as |comment|}}
+    <div>
+      <strong>{{comment.user.name}}</strong>: {{comment.body}}
+    </div>
+  {{/each}}
+
+  <div class="agent-comment-box">
+    <textarea placeholder="Write a comment..." {{on "input" this.updateComment}}>{{this.commentText}}</textarea>
+    <button class="agent-button" {{on "click" this.submitComment}}>Post Comment</button>
+  </div>
 </div>

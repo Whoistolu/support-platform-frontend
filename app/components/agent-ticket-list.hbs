@@ -1,14 +1,12 @@
-<h2>All Support Tickets</h2>
-
-<ul>
-  {{#each this.tickets as |ticket|}}
-    <li>
-      <strong>{{ticket.title}}</strong>
-      -
-      {{ticket.status}}
-      -
-      {{ticket.user.email}}
-      <LinkTo @route="agent.detail" @model={{ticket.id}}>View</LinkTo>
-    </li>
-  {{/each}}
-</ul>
+<div class="agent-container">
+  <h2>All Tickets</h2>
+  <ul>
+    {{#each @tickets as |ticket|}}
+      <li class="agent-ticket">
+        <h3>{{ticket.subject}}</h3>
+        <p>Status: {{ticket.status}}</p>
+        <button class="agent-button" {{on "click" (fn this.viewDetail ticket.id)}}>View Details</button>
+      </li>
+    {{/each}}
+  </ul>
+</div>
