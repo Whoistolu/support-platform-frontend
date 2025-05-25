@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import service from '@ember/service';
 import redirectIfNotAuthenticated from '../../../utils/redirect-if-not-authenticated';
 
 export default class AgentTicketsRoute extends Route {

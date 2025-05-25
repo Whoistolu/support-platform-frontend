@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import gql from 'graphql-tag';
-import { inject as service } from '@ember/service';
+import service from '@ember/service';
 import { uploadFile } from '../utils/direct-upload';
 
 export default class TicketCreateFormComponent extends Component {
